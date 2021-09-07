@@ -13,7 +13,7 @@ node{
   //  Thanks,
   //  sadfgds''', cc: '', from: '', replyTo: '', subject: 'Jenkins Job Status', to: 'sadfgds@gmail.com'
   //}
-  stage('Slack notification){
+  stage('Slack notification'){
     slackSend baseUrl: 'https://hooks.slack.com/services/', 
     channel: '#jenkins-pipeline-demo', 
     color: 'good', 
