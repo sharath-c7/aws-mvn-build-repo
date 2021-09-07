@@ -1,6 +1,7 @@
 node{
   stage('SCM Checkout'){
-        git 'https://github.com/sharath-c7/aws-mvn-build-repo/'
+        checkout([$class: 'GitSCM', branches: [[name: '*/main']],
+    userRemoteConfigs: [[url: 'https://github.com/sharath-c7/aws-mvn-build-repo/']]])
   }
   stage('Compile-Package'){
     // Get maven Home path
