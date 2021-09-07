@@ -9,12 +9,27 @@ node{
     sh "${mvnHome}/bin/mvn package"
   }
   
-  stage('SonarQube Analysis'){
-    def mvnHome = tool name: 'maven-3', type: 'maven'
-    withSonarQubeEnv('sonar-8'){
-      sh "${mvnHome}/bin/mvn sonar:sonar"
+  stage('SonarQube analysis') {
+    steps{
+        script {
+            scannerHome = tool 'SonarQube';
+        }
+        withSonarQubeEnv('SonarQube') {
+              sh """
+                  ${scannerHome}/bin/sonar-scanner \
+                  -Dsonar.projectKey=3071ec55acc3f99cfbf8169c143633fa92ab259d \
+                  -Dsonar.sources=. \
+  """
+        }
     }
-  }
+}
+  
+  //stage('SonarQube Analysis'){
+  //  def mvnHome = tool name: 'maven-3', type: 'maven'
+  //  withSonarQubeEnv('sonar-8'){
+  //    sh "${mvnHome}/bin/mvn sonar:sonar"
+  //  }
+  //}
   
   //stage('Email notification'){
   //  mail bcc: '', body: '''Hi Welcome to jenkins email alerts
