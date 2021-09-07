@@ -10,11 +10,9 @@ node{
   }
 
   stage ('Scan and Build Jar File') {
-            steps {
-            def mvnHome = tool name: 'maven-3', type: 'maven'
+               def mvnHome = tool name: 'maven-3', type: 'maven'
                withSonarQubeEnv(installationName: 'sonar-8', credentialsId: 'SonarQubeToeKn') {
-                sh "${mvnHome}/bin/mvn clean package sonar:sonar"
-                }
+               sh "${mvnHome}/bin/mvn clean package sonar:sonar"
             }
         }
   //stage('SonarQube Analysis'){
