@@ -8,11 +8,11 @@ node{
     def mvnHome = tool name: 'maven-3', type: 'maven'
     sh "${mvnHome}/bin/mvn package"
   }
-  stage('Email notification'){
-    mail bcc: '', body: '''Hi Welcome to jenkins email alerts
-    Thanks,
-    Sharath''', cc: '', from: '', replyTo: '', subject: 'Jenkins Job Status', to: 'sharath.c721@gmail.com'
-  }
+  //stage('Email notification'){
+  //  mail bcc: '', body: '''Hi Welcome to jenkins email alerts
+  //  Thanks,
+  //  sadfgds''', cc: '', from: '', replyTo: '', subject: 'Jenkins Job Status', to: 'sadfgds@gmail.com'
+  //}
   stage('Slack notification){
     slackSend baseUrl: 'https://hooks.slack.com/services/', 
     channel: '#jenkins-pipeline-demo', 
